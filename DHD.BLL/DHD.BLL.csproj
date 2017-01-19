@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="assets\ResponseData.cs" />
     <Compile Include="CommentBll.cs" />
     <Compile Include="ConfigureBll.cs" />
     <Compile Include="NewTypeBll.cs" />

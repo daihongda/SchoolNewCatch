@@ -35,6 +35,10 @@ namespace DHD.BLL
         public int DeleteRange(string ids)
         {
             return dal.DeleteRange(ids);
-        } 
+        }
+        public int Edit(School newSchool)
+        {
+            return dal.Edit(newSchool);
+        }
     }
 }

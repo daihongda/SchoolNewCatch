@@ -1,7 +1,87 @@
-﻿@model IEnumerable<DHD.ENTITY.School>
-@{
+﻿@{
     ViewBag.Title = "Index";
 }
+    <div class="row">
+        <div class="col-sm-6"><ol class="breadcrumb bc-3"><li><a href="/"><i class="entypo-home"></i>首页</a></li><li class="active"><strong>我的云盘</strong></li></ol></div>
+        <div class="col-sm-6 text-right">
+            <button type="button" class="btn btn-blue" id="btnAddFile"><i class="entypo-upload"></i> 上传文件</button>
+            <button type="button" class="btn btn-success" id="btnAddFolder"><i class="entypo-folder"></i> 新建文件夹</button>
+        </div>
+    </div>
+    <div class="box">
+        <div class="table-head form-inline pd10 ">
+            <div class="pull-left">
+                <ol class="breadcrumb bc-3">
+                    <li class="active"><strong>主目录</strong></li>
+                </ol>
+            </div>
+            <div class="text-right">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="txtSearch" placeholder="搜索关键字">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-default" type="button" id="btnSearch"><i class="fa fa-search"></i> 搜索</button>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive table-main">
+            <div id="tbfilelist_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                <div class="row"><div id="tbfilelist_processing" class="dataTables_processing" style="visibility: hidden;"><img src="/Content/assets/images/loader-1.gif"></div></div><table class="table table-hover datatable files-list dataTable" id="tbfilelist" aria-describedby="tbfilelist_info">
+                    <thead>
+                        <tr class="primary" role="row">
+                            <th class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="
 
-<h2>Index</h2>
+                    " style="width: 35px;">
 
+                            </th>
+                            <th class="filename-th sorting" role="columnheader" tabindex="0" aria-controls="tbfilelist" rowspan="1" colspan="1" aria-label="
+                        文件名
+
+                    : activate to sort column ascending">
+                                文件名
+
+                            </th>
+                            <th class="sorting" role="columnheader" tabindex="0" aria-controls="tbfilelist" rowspan="1" colspan="1" aria-label="大小: activate to sort column ascending" style="width: 120px;">大小</th>
+                            <th class="sorting" role="columnheader" tabindex="0" aria-controls="tbfilelist" rowspan="1" colspan="1" aria-label="上传者: activate to sort column ascending" style="width: 100px;">上传者</th>
+                            <th class="sorting" role="columnheader" tabindex="0" aria-controls="tbfilelist" rowspan="1" colspan="1" aria-label="上传时间: activate to sort column ascending" style="width: 130px;">上传时间</th>
+                        </tr>
+                    </thead>
+
+                    <tbody role="alert" aria-live="polite" aria-relevant="all"><tr class="odd"><td class=""><div class="checkbox checkbox-replace neon-cb-replacement"><label class="cb-wrapper"><input type="checkbox" value="3844c06b-0eb9-4ca8-9342-04dc8a40d4ab"><div class="checked"></div></label></div></td><td class="filename-td"><span class="file-icon file-icon-folder"></span><a href="/CloudDisk/MyCloudDiskList/3844c06b-0eb9-4ca8-9342-04dc8a40d4ab?shortId=">4566</a>                                            <div class="filename-option"><a href="javascript:void(0)" class="tooltip-primary fedit" data-toggle="tooltip" data-placement="top" title="" data-original-title="重命名" fileid="3844c06b-0eb9-4ca8-9342-04dc8a40d4ab"><i class="glyphicon glyphicon-pencil"></i></a><a href="javascript:void(0)" class="tooltip-primary fdelete" data-toggle="tooltip" data-placement="top" title="" data-original-title="删除" fileid="3844c06b-0eb9-4ca8-9342-04dc8a40d4ab"><i class="glyphicon glyphicon-trash"></i></a>                                            <a href="javascript:void(0)" class="tooltip-primary fmove" data-toggle="tooltip" data-placement="top" title="" data-original-title="移动" fileid="3844c06b-0eb9-4ca8-9342-04dc8a40d4ab"><i class="glyphicon glyphicon-export"></i></a>                                            </div></td><td class=""></td><td class="">Mike Dai</td><td class="">2016-12-28 21:10</td></tr></tbody>
+                </table><div class="foot clearfix"><div class="pull-left"><div class="dataTables_info" id="tbfilelist_info"><div><div class="checkbox checkbox-replace neon-cb-replacement"><label class="cb-wrapper"><input type="checkbox" id="chk-1"><div class="checked"></div></label></div><a style="display:none" class="vertical-middle" href="javascript:void(0)" id="BatchShare"><i class="fa fa-share-alt-square"></i>取消分享</a><a style="display:inline" class="vertical-middle" href="javascript:void(0)" id="BatchDelete"><i class="glyphicon glyphicon-trash"></i> 删除</a><a style="display:inline" class="vertical-middle" href="javascript:void(0)" id="BatchMove"><i class="glyphicon glyphicon-export"></i> 移动</a></div></div></div><div class="pull-right"><div class="dataTables_paginate paging_bootstrap"><ul class="pagination pagination-sm" style="display:none;"><li class="first disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li><li class="prev disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li><li class="active"><a href="#">1</a></li><li class="next disabled"><a href="#"><i class="fa fa-angle-right"></i></a></li><li class="last disabled"><a href="#"><i class="fa fa-angle-double-right"></i></a></li><li class="pagi-input"><label class="control-label">跳转至</label><input class="form-control"></li></ul></div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="box mt10 pd10 clearfix" id="DivPercentProgress" style="">
+        <h4 class="mb10">我的云盘储存容量</h4>
+        <div class="row">
+            <div class="col-xs-8">
+                <div class="progress progress-striped active">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" id="divProgress" aria-valuenow="51716" aria-valuemax="104857600" style="width: 0.0493202%;">
+                        <!--0-60%(progress-bar-success) / 60%-90%(progress-bar-warning) / 90%-100%(progress-bar-danger)-->
+                        <span class="sr-only">0.049320220947265625%已使用</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4" id="progresstext">共100M,已使用50.50 K,当前剩余99.95 M</div>
+        </div>
+    </div>
+
+    <!--<div class="upload-box">
+        <div class="title">
+            上传文件
+            <div class="text-right">
+                <a href=""><i class="fa fa-close"></i></a>
+                <a href=""><i class="fa fa-chevron-down"></i></a>
+        </div>
+        </div>
+    </div>-->
+    <!-- Footer -->
+    <div class="main">
+        <div class="inner mt40 ie8-mt40">
+            <hr>Copyright © 2010-2014 <a href="http://www.mintcode.com" target="_blank"><img src="/Content/assets/images/mintcode-logo.png" data-toggle="tooltip" data-placement="top" title="" data-original-title="由杭州曼拓科技有限公司开发维护"></a> All Rights Reserved
+            <a href="http://fir.im/titans" target="_blank" class="badge"><i class="fa fa-mobile fa-lg"></i> APP下载</a>
+
+            <a href="javascript:void(0)" class="feedback-icon tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="问题反馈" id="btnFeedBack">问题反馈</a>
+        </div>
+    </div>

@@ -11,8 +11,15 @@ namespace DHD.DAL
         public MyDataContext db = new MyDataContext();
         public School Get(int id)
         {
-            var School = db.Schools.Find(id);
-            return School;
+            try
+            {
+                School School = db.Schools.Find(id);
+                return School;
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
         }
         public School Add(School newSchool)
         {
@@ -47,6 +54,15 @@ namespace DHD.DAL
                     db.Schools.Remove(School);
                 }
             }
+            return db.SaveChanges();
+        }
+        public int Edit(School newSchool)
+        {
+
+            var school = db.Schools.Find(newSchool.Id);
+            school.HomePage = newSchool.HomePage;
+            school.Introduce = newSchool.Introduce;
+            school.Name = newSchool.Name;
             return db.SaveChanges();
         }
     }

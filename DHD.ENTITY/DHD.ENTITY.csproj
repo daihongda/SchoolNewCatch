@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Comment.cs" />
     <Compile Include="Configure.cs" />
+    <Compile Include="MenuItem.cs" />
     <Compile Include="MyDataContext.cs" />
     <Compile Include="NewType.cs" />
     <Compile Include="NewTypeUrl.cs" />
